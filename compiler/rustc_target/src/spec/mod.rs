@@ -75,6 +75,7 @@ mod openbsd_base;
 mod redox_base;
 mod riscv_base;
 mod solaris_base;
+mod stardust_base;
 mod thumb_base;
 mod uefi_msvc_base;
 mod vxworks_base;
@@ -745,6 +746,8 @@ supported_targets! {
     ("mipsel-sony-psp", mipsel_sony_psp),
     ("mipsel-unknown-none", mipsel_unknown_none),
     ("thumbv4t-none-eabi", thumbv4t_none_eabi),
+
+    ("x86_64-unknown-stardust", x86_64_unknown_stardust),
 }
 
 /// Everything `rustc` knows about how to compile for a specific target.

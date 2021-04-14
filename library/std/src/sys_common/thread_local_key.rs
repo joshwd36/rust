@@ -178,14 +178,14 @@ impl StaticKey {
         // value returned from the creation routine.
         // FIXME: this is clearly a hack, and should be cleaned up.
         let key1 = imp::create(self.dtor);
-        let key = if key1 != 0 {
+        let key = if key1 as usize != 0 {
             key1
         } else {
             let key2 = imp::create(self.dtor);
             imp::destroy(key1);
             key2
         };
-        rtassert!(key != 0);
+        rtassert!(key as usize != 0);
         match self.key.compare_exchange(0, key as usize, Ordering::SeqCst, Ordering::SeqCst) {
             // The CAS succeeded, so we've created the actual key
             Ok(_) => key as usize,

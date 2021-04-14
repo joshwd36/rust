@@ -32,9 +32,12 @@ cfg_if::cfg_if! {
         #[stable(feature = "rust1", since = "1.0.0")]
         pub use crate::sys::ext as windows;
 
+        #[cfg(target_os = "stardust")]
+        #[stable(feature = "rust1", since = "1.0.0")]
+        pub use crate::sys::ext as stardust;
+
         #[cfg(any(target_os = "linux", target_os = "l4re"))]
         pub mod linux;
-
     }
 }
 
