@@ -164,7 +164,7 @@ pub fn rust_backtrace_env() -> RustBacktrace {
 
     // Setting environment variables for Fuchsia components isn't a standard
     // or easily supported workflow. For now, always display backtraces.
-    if cfg!(target_os = "fuchsia") {
+    if cfg!(any(target_os = "fuchsia", target_os = "stardust")) {
         return RustBacktrace::Print(PrintFmt::Full);
     }
 

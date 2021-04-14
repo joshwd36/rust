@@ -39,6 +39,11 @@ pub use crate::sys::ext as unix;
 pub use crate::sys::ext as windows;
 
 #[cfg(not(doc))]
+#[cfg(target_os = "stardust")]
+#[stable(feature = "rust1", since = "1.0.0")]
+pub use crate::sys::ext as stardust;
+
+#[cfg(not(doc))]
 #[cfg(any(target_os = "linux", target_os = "l4re"))]
 pub mod linux;
 

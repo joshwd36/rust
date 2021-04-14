@@ -35,6 +35,9 @@ cfg_if::cfg_if! {
     } else if #[cfg(target_os = "hermit")] {
         mod hermit;
         pub use self::hermit::*;
+    } else if #[cfg(target_os = "stardust")] {
+        mod stardust;
+        pub use self::stardust::*;
     } else if #[cfg(target_os = "wasi")] {
         mod wasi;
         pub use self::wasi::*;
@@ -62,6 +65,7 @@ cfg_if::cfg_if! {
         pub use self::ext as unix_ext;
     } else if #[cfg(any(target_os = "hermit",
                         all(target_arch = "wasm32", not(target_os = "wasi")),
+                        target_os = "stardust",
                         all(target_vendor = "fortanix", target_env = "sgx")))] {
         // On non-WASI wasm right now the module below doesn't compile
         // (missing things in `libc` which is empty) so just omit everything

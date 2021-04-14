@@ -76,6 +76,7 @@ mod openbsd_base;
 mod redox_base;
 mod riscv_base;
 mod solaris_base;
+mod stardust_base;
 mod thumb_base;
 mod uefi_msvc_base;
 mod vxworks_base;
@@ -893,6 +894,8 @@ supported_targets! {
     ("mipsel-sony-psp", mipsel_sony_psp),
     ("mipsel-unknown-none", mipsel_unknown_none),
     ("thumbv4t-none-eabi", thumbv4t_none_eabi),
+
+    ("x86_64-unknown-stardust", x86_64_unknown_stardust),
 
     ("aarch64_be-unknown-linux-gnu", aarch64_be_unknown_linux_gnu),
     ("aarch64-unknown-linux-gnu_ilp32", aarch64_unknown_linux_gnu_ilp32),
