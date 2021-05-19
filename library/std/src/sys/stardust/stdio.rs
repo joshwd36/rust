@@ -35,7 +35,9 @@ impl io::Write for Stdout {
     fn write(&mut self, data: &[u8]) -> io::Result<usize> {
         if data.len() > 0 {
             unsafe {
-                libc::printbytes(data.as_ptr() as *const libc::c_char, data.len() as libc::c_int)
+                for data in data.chunks(libc::c_int::MAX as usize) {
+                    libc::printbytes(data.as_ptr() as *const libc::c_char, data.len() as libc::c_int)
+                }
             }
         }
         Ok(data.len())
@@ -56,7 +58,9 @@ impl io::Write for Stderr {
     fn write(&mut self, data: &[u8]) -> io::Result<usize> {
         if data.len() > 0 {
             unsafe {
-                libc::printbytes(data.as_ptr() as *const libc::c_char, data.len() as libc::c_int)
+                for data in data.chunks(libc::c_int::MAX as usize) {
+                    libc::printbytes(data.as_ptr() as *const libc::c_char, data.len() as libc::c_int)
+                }
             }
         }
         Ok(data.len())
